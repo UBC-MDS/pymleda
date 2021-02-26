@@ -1,6 +1,6 @@
 # pymleda 
 
-![](https://github.com/tanmaysharma19/pymleda/workflows/build/badge.svg) [![codecov](https://codecov.io/gh/tanmaysharma19/pymleda/branch/main/graph/badge.svg)](https://codecov.io/gh/tanmaysharma19/pymleda) ![Release](https://github.com/tanmaysharma19/pymleda/workflows/Release/badge.svg) [![Documentation Status](https://readthedocs.org/projects/pymleda/badge/?version=latest)](https://pymleda.readthedocs.io/en/latest/?badge=latest)
+![](https://github.com/UBC-MDS/pymleda/workflows/build/badge.svg) [![codecov](https://codecov.io/gh/UBC-MDS/pymleda/branch/main/graph/badge.svg)](https://codecov.io/gh/UBC-MDS/pymleda) ![Release](https://github.com/UBC-MDS/pymleda/workflows/Release/badge.svg) [![Documentation Status](https://readthedocs.org/projects/pymleda/badge/?version=latest)](https://pymleda.readthedocs.io/en/latest/?badge=latest)
 
 Python package that helps with preliminary eda for supervised machine learning tasks.
 
@@ -28,7 +28,7 @@ The official documentation is hosted on Read the Docs: https://pymleda.readthedo
 
 ## Contributors
 
-We welcome and recognize all contributions. You can see a list of current contributors in the [contributors tab](https://github.com/tanmaysharma19/pymleda/graphs/contributors).
+We welcome and recognize all contributions. You can see a list of current contributors in the [contributors tab](https://github.com/UBC-MDS/pymleda/graphs/contributors).
 
 ### Credits
 
