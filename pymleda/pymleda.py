@@ -68,11 +68,10 @@ def dftype(df):
     >>> from pymleda import pymleda
     >>> df = pd.read_csv("test_data.csv")
     >>> pymleda.dftype(df)
-
     """
 
     return summary, unique
-
+    
 
 def autoimpute_na(df):
     """
@@ -91,3 +90,23 @@ def autoimpute_na(df):
     >>> pymleda.autoimpute_na(toy_df)
     """
     return imputed_df
+
+
+def dfscaling(df):
+    """
+    Apply standard scaling to the numeric features of a given dataframe. 
+    Parameters
+    ----------
+    df : pandas.DataFrame
+    	A pandas data frame.
+    Returns
+    -------
+    scaled_df : pandas.DataFrame
+      A data frame with standard scaling applied to the numeric features.  
+    Examples
+    --------
+    >>> from pymleda import pymleda
+    >>> df = pd.read_csv("test_data.csv")
+    >>> dfscaling(df)
+    """ 
+    return scaled_df
