@@ -19,6 +19,29 @@ class SupervisedData:
 
     **kawrgs: 
         Additional parameters to pass to sklearn's train_test_split(). For more information see hyperlink: `sklearn's function documentation <https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html/>`_.
+    
+    Attributes
+    ----------
+    data : pandas dataframe
+        The original data set
+
+    train_df: pandas dataframe
+        The training portion of the dataset
+    
+    test_df: pandas dataframe
+        The test portion of the dataset
+
+    x_train : pandas dataframe
+        The training portion of the dataset containing the X features only.
+
+    y_train: pandas dataframe
+        The training portion of the dataset containing the y targets only.
+
+    x_test: pandas dataframe
+        The test portion of the dataset containing the X features only.
+
+    y_test: pandas dataframe
+        The test portion of the dataset containing the y targets only.
     """
 
     def __init__(self, data, x_cols, y_cols, **kwargs):
