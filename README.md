@@ -28,6 +28,13 @@ The official documentation is hosted on Read the Docs: https://pymleda.readthedo
 
 ## Contributors
 
+### Development Leads
+
+- Saule Atymtayeva
+- Sang Yoon Lee
+- Yazan Saleh
+- Tanmay Sharma
+
 We welcome and recognize all contributions. You can see a list of current contributors in the [contributors tab](https://github.com/UBC-MDS/pymleda/graphs/contributors).
 
 ### Credits
