@@ -4,7 +4,7 @@ class SupervisedData:
     """A wrapper class for simplifying data splitting
 
     Wrapper that utilizes `sklearn.model_selection.train_test_split` to perform data spltting 
-    and provides convient access to X and y portions of both the test and the train splits.
+    and provides convenient access to `X` and `y` portions of both the test split and the train split.
 
     Parameters
     ----------
@@ -32,16 +32,16 @@ class SupervisedData:
         The test portion of the dataset
 
     x_train : pandas dataframe
-        The training portion of the dataset containing the X features only.
+        The training portion of the dataset containing `X` features only.
 
     y_train: pandas dataframe
-        The training portion of the dataset containing the y targets only.
+        The training portion of the dataset containing `y` targets only.
 
     x_test: pandas dataframe
-        The test portion of the dataset containing the X features only.
+        The test portion of the dataset containing `X` features only.
 
     y_test: pandas dataframe
-        The test portion of the dataset containing the y targets only.
+        The test portion of the dataset containing `y` targets only.
     """
 
     def __init__(self, data, x_cols, y_cols, **kwargs):
