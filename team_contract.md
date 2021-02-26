@@ -1,6 +1,6 @@
 Team Contract of Group 10
 =========================
- Date: 2021-25-02
+ Date: 2021-02-25
 
 
 This document outlines the expectations discussed and agreed upon by the team members of group 10 for the DSCI 524 UBC MDS course. It is subject to change as the team decides it is needed.
