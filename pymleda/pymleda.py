@@ -6,7 +6,7 @@ class SupervisedData:
 
     Parameters
     ----------
-    data : pandas dataframe
+    data : pandas.DataFrame
         Data set to be used for splitting
     
     x_cols: *array
@@ -20,28 +20,55 @@ class SupervisedData:
     
     Attributes
     ----------
-    data : pandas dataframe
+    data : pandas.DataFrame
         The original data set
 
-    train_df: pandas dataframe
+    train_df: pandas.DataFrame
         The training portion of the dataset
     
-    test_df: pandas dataframe
+    test_df: pandas.DataFrame
         The test portion of the dataset
 
-    x_train : pandas dataframe
+    x_train : pandas.DataFrame
         The training portion of the dataset containing `X` features only.
 
-    y_train: pandas dataframe
+    y_train: pandas.DataFrame
         The training portion of the dataset containing `y` targets only.
 
-    x_test: pandas dataframe
+    x_test: pandas.DataFrame
         The test portion of the dataset containing `X` features only.
 
-    y_test: pandas dataframe
+    y_test: pandas.DataFrame
         The test portion of the dataset containing `y` targets only.
     """
 
     def __init__(self, data, x_cols, y_cols, **kwargs):
         """See help(SupervisedData)"""
 
+
+
+def dftype(df):
+    """
+    Explore the type of data frame variables and columns.
+
+    Parameters
+    ----------
+    df : pandas.DataFrame
+      A pandas data frame.
+
+    Returns
+    -------
+    summary : pandas.DataFrame
+      The data frame contains summary value which comes from describe().
+    unique : pandas.DataFrame
+      The data frame contains unique entries and its length for non-numerical columns.   
+
+    Examples
+    --------
+    >>> from pymleda import pymleda
+    >>> df = pd.read_csv("test_data.csv")
+    >>> pymleda.dftype(df)
+
+    """
+
+    return summary, unique
