@@ -36,8 +36,8 @@ def dftype(df):
 
     Examples
     --------
-    >>> from dftype import dftype
+    >>> from pymleda import pymleda
     >>> df = pd.read_csv("test_data.csv")
-    >>> dftype(df)
+    >>> pymleda.dftype(df)
 
     """
