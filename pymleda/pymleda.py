@@ -14,6 +14,6 @@ def autoimpute_na(df):
     Examples
     --------
     >>> from pymleda import pymleda
-    >>> pymleda.impute_na(toy_df)
+    >>> pymleda.autoimpute_na(toy_df)
     """
     return imputed_df
