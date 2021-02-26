@@ -43,4 +43,5 @@ class SupervisedData:
     """
 
     def __init__(self, data, x_cols, y_cols, **kwargs):
+        """See help(SupervisedData)"""
 
