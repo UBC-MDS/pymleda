@@ -1,6 +1,6 @@
 import pandas as pd
 
-def impute_na(df):
+def autoimpute_na(df):
     """
     Identify and impute missing values in a dataframe.
     Parameters
