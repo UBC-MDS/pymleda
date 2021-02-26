@@ -32,13 +32,13 @@ You can either clone the public repository:
 
 .. code-block:: console
 
-    $ git clone git://github.com/tanmaysharma19/pymleda
+    $ git clone git://github.com/UBC-MDS/pymleda
 
 Or download the `tarball`_:
 
 .. code-block:: console
 
-    $ curl  -OL https://github.com/tanmaysharma19/pymleda/tarball/main
+    $ curl  -OL https://github.com/UBC-MDS/pymleda/tarball/main
 
 Once you have a copy of the source, you can install it. The method of installation will depend on the packaging library being used.
 
@@ -55,5 +55,5 @@ If `poetry` is being used (poetry.lock and pyproject.toml files are present), in
     $ poetry install
 
 
-.. _Github repo: https://github.com/tanmaysharma19/pymleda
-.. _tarball: https://github.com/tanmaysharma19/pymleda/tarball/master
+.. _Github repo: https://github.com/UBC-MDS/pymleda
+.. _tarball: https://github.com/UBC-MDS/pymleda/tarball/master
