@@ -1,5 +1,3 @@
-from sklearn.model_selection import train_test_split
-
 class SupervisedData:
     """A wrapper class for simplifying data splitting
 
