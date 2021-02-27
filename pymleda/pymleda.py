@@ -17,7 +17,7 @@ class SupervisedData:
 
     **kawrgs: 
         Additional parameters to pass to sklearn's train_test_split(). 
-        In the absence of additional parameters for the default parameters of train_test_split() are used including test size  = 0.25
+        In the absence of additional parameters, the default parameters of train_test_split() are used including test size  = 0.25
         For more information see hyperlink: `sklearn's function documentation <https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html/>`_.
     
     Attributes
