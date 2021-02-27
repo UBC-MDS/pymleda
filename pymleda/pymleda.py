@@ -47,7 +47,7 @@ class SupervisedData:
     --------
     >>> from pymleda import pymleda
     >>> from sklearn.model_selection import train_test_split
-    >>> supervised_data = SupervisedData(data, x_cols = ['feature1', 'feature2'], y_cols = ['target'])
+    >>> supervised_data = SupervisedData(df, x_cols = ['feature1', 'feature2'], y_cols = ['target'])
     
     The original dataset
 
@@ -105,9 +105,9 @@ def dftype(df):
     Returns
     -------
     summary : pandas.DataFrame
-      The data frame contains summary value which comes from describe().
+      The data frame contains summary values which come from describe().
     unique : pandas.DataFrame
-      The data frame contains unique entries and its length for non-numerical columns.   
+      The data frame contains unique entries and their length in case of non-numerical columns.   
 
     Examples
     --------
