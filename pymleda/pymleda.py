@@ -16,7 +16,9 @@ class SupervisedData:
         Sequence of target names (y) to be used as dependent variables or labels
 
     **kawrgs: 
-        Additional parameters to pass to sklearn's train_test_split(). For more information see hyperlink: `sklearn's function documentation <https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html/>`_.
+        Additional parameters to pass to sklearn's train_test_split(). 
+        In the absence of additional parameters, the default parameters of train_test_split() are used including test size  = 0.25
+        For more information see hyperlink: `sklearn's function documentation <https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html/>`_.
     
     Attributes
     ----------
@@ -40,8 +42,52 @@ class SupervisedData:
 
     y_test: pandas.DataFrame
         The test portion of the dataset containing `y` targets only.
-    """
 
+    Examples
+    --------
+    >>> from pymleda import pymleda
+    >>> from sklearn.model_selection import train_test_split
+    >>> supervised_data = SupervisedData(df, x_cols = ['feature1', 'feature2'], y_cols = ['target'])
+    
+    The original dataset
+
+    >>> supervised_data.data
+        feature1  feature2  target
+    0     0         0           n
+    1     1         1           y
+    2     2         2           y
+    3     3         3           y
+
+    >>> supervised_data.train_df
+        feature1  feature2  target
+    0     0         0           n
+    1     1         1           y
+    3     3         3           y
+
+    >>> supervised_data.test_df
+        feature1  feature2  target
+    2     2         2           y
+
+    >>> supervised_data.x_train
+        feature1  feature2  
+    0     0         0
+    1     1         1
+    3     3         3
+
+    >>> supervised_data.y_train
+        target
+    0   n
+    1   y
+    3   y
+
+    >>> supervised_data.x_test
+        feature1  feature2
+    2     2         2
+
+    >>> supervised_data.y_test
+        target
+    2   y
+    """
     def __init__(self, data, x_cols, y_cols, **kwargs):
         """See help(SupervisedData)"""
 
@@ -59,9 +105,9 @@ def dftype(df):
     Returns
     -------
     summary : pandas.DataFrame
-      The data frame contains summary value which comes from describe().
+      The data frame contains summary values which come from describe().
     unique : pandas.DataFrame
-      The data frame contains unique entries and its length for non-numerical columns.   
+      The data frame contains unique entries and their length in case of non-numerical columns.   
 
     Examples
     --------
