@@ -135,6 +135,13 @@ def autoimpute_na(df):
     >>> from pymleda import pymleda
     >>> pymleda.autoimpute_na(toy_df)
     """
+
+    # Check if there are any missing values entered manually
+    rogue_na = ['na', 'n/a', 'n\a', 'not available', 'Not available', '-', '--', '---']
+
+    # Replace these entered manually missing values with NaN
+    df.replace(rogue_na, np.nan);
+
     return imputed_df
 
 
