@@ -138,9 +138,7 @@ def autoimpute_na(df):
 
     # Check if there are any missing values entered manually
     rogue_na = ['na', 'n/a', 'n\a', 'NA', 'N/A', 'N\A', 'not available', 'Not available', '-', '--', '---']
-
-    # Replace these entered manually missing values with NaN
-    df.replace(rogue_na, np.nan);
+    df.replace(rogue_na, np.nan); # Replace entered manually missing values with NaN
 
     # If there are no missing values, then return the original df
     col_count = 0
@@ -158,7 +156,12 @@ def autoimpute_na(df):
             df[col] = df[col].fillna(df[col].mean())
             imputed_df = df
 
-    
+    # Fill missing values with the most frequent value for categorical columns
+    categorical_columns = df.select_dtypes(exclude=["number", "bool_", "object_"]).columns.values
+    for col in categorical_columns:
+        if np.sum(df[col].isnull()) > 0:
+            df[col] = df[col].fillna(df[col].describe()['top'])
+            imputed_df = df
 
     return imputed_df
 
