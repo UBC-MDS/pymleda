@@ -142,14 +142,23 @@ def autoimpute_na(df):
     # Replace these entered manually missing values with NaN
     df.replace(rogue_na, np.nan);
 
-    # If there is no missing values, then return the original df
+    # If there are no missing values, then return the original df
     col_count = 0
     for col in df:
         if np.sum(df[col].isnull()) == 0:
             col_count += 1
-            if col_count == len(df. columns):
+            if col_count == len(df.columns):
                 imputed_df = df
                 print("There are no missing values in the dataframe! I am returning the original dataframe!")
+
+    # Fill missing values with the mean for numeric columns
+    numeric_columns = df.select_dtypes(include=["number"]).columns.values
+    for col in numeric_columns:
+        if np.sum(df[col].isnull()) > 0:
+            df[col] = df[col].fillna(df[col].mean())
+            imputed_df = df
+
+    
 
     return imputed_df
 
