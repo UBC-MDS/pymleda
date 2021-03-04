@@ -137,10 +137,19 @@ def autoimpute_na(df):
     """
 
     # Check if there are any missing values entered manually
-    rogue_na = ['na', 'n/a', 'n\a', 'not available', 'Not available', '-', '--', '---']
+    rogue_na = ['na', 'n/a', 'n\a', 'NA', 'N/A', 'N\A', 'not available', 'Not available', '-', '--', '---']
 
     # Replace these entered manually missing values with NaN
     df.replace(rogue_na, np.nan);
+
+    # If there is no missing values, then return the original df
+    col_count = 0
+    for col in df:
+        if np.sum(df[col].isnull()) == 0:
+            col_count += 1
+            if col_count == len(df. columns):
+                imputed_df = df
+                print("There are no missing values in the dataframe! I am returning the original dataframe!")
 
     return imputed_df
 
