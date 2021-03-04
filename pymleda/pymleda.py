@@ -121,7 +121,7 @@ def dftype(df):
 
 def autoimpute_na(df):
     """
-    Identify and impute missing values in a dataframe.
+    Identify and impute missing values with the mean for numeric columns and the most frequent value for categorical columns in a dataframe.
     Parameters
     ----------
     df : pandas.DataFrame
