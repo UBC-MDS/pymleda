@@ -35,6 +35,11 @@ def test_dftype():
         len(pymleda.dftype(df)[0]) == 8
     ), "The length of summary data frame is incorrect."
 
+    assert (
+        (list(pymleda.dftype(df)[1].query("column_name == 'origin'").unique_values))
+        == df["origin"].unique()
+    ).all(), "The unique values are incorrect."
+
 
 def test_dfscaling():
 
