@@ -30,8 +30,8 @@ def test_supervised_data_split_sizes():
         toy_data, x_cols=["col1", "col2"], y_cols=["col3"]
     )
 
-    assert len(supervised_data.test_df) == 0.75 * len(toy_data)
-    assert len(supervised_data.train_df) == 0.25 * len(toy_data)
+    assert len(supervised_data.test_df) == 0.25 * len(toy_data)
+    assert len(supervised_data.train_df) == 0.75 * len(toy_data)
 
 
 def test_supervised_data_x():
