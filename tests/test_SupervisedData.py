@@ -9,8 +9,13 @@ def test_supervised_data_original_dataset():
     )
 
     assert (
-        pymleda.SupervisedData(toy_data, x_cols=["col1", "col2"], y_cols=["col3"]).data
-        == toy_data
+        pd.testing.assert_frame_equal(
+            pymleda.SupervisedData(
+                toy_data, x_cols=["col1", "col2"], y_cols=["col3"]
+            ).data,
+            toy_data,
+        )
+        == None
     )
 
 
