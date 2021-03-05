@@ -1,4 +1,5 @@
 from pymleda import pymleda
+from pymleda import __version__
 import pandas as pd
 import numpy as np
 import pytest
@@ -7,6 +8,7 @@ from sklearn.preprocessing import StandardScaler
 
 def test_version():
     assert __version__ == "0.1.0"
+
 
 @pytest.fixture
 def model_df():
