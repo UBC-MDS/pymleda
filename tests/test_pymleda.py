@@ -23,7 +23,7 @@ def test_dftype():
 
     assert type(pymleda.dftype(df)[0]) == (
         pd.core.frame.DataFrame
-    ), "The date type of summry should be data frame."
+    ), "The date type of summary should be data frame."
 
     assert type(pymleda.dftype(df)[1]) == (
         pd.core.frame.DataFrame
