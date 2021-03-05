@@ -1,25 +1,28 @@
+import pandas as pd
+
+
 class SupervisedData:
     """A wrapper class for simplifying data splitting
 
-    Wrapper that utilizes `sklearn.model_selection.train_test_split` to perform data spltting 
+    Wrapper that utilizes `sklearn.model_selection.train_test_split` to perform data spltting
     and provides convenient access to `X` and `y` portions of both the test split and the train split.
 
     Parameters
     ----------
     data : pandas.DataFrame
         Data set to be used for splitting
-    
+
     x_cols: *array
-        Sequence of feature names (X) to be used as independent variables 
+        Sequence of feature names (X) to be used as independent variables
 
     y_cols: *array
         Sequence of target names (y) to be used as dependent variables or labels
 
-    **kawrgs: 
-        Additional parameters to pass to sklearn's train_test_split(). 
+    **kawrgs:
+        Additional parameters to pass to sklearn's train_test_split().
         In the absence of additional parameters, the default parameters of train_test_split() are used including test size  = 0.25
         For more information see hyperlink: `sklearn's function documentation <https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html/>`_.
-    
+
     Attributes
     ----------
     data : pandas.DataFrame
@@ -27,7 +30,7 @@ class SupervisedData:
 
     train_df: pandas.DataFrame
         The training portion of the dataset
-    
+
     test_df: pandas.DataFrame
         The test portion of the dataset
 
@@ -48,7 +51,7 @@ class SupervisedData:
     >>> from pymleda import pymleda
     >>> from sklearn.model_selection import train_test_split
     >>> supervised_data = SupervisedData(df, x_cols = ['feature1', 'feature2'], y_cols = ['target'])
-    
+
     The original dataset
 
     >>> supervised_data.data
@@ -69,7 +72,7 @@ class SupervisedData:
     2     2         2           y
 
     >>> supervised_data.x_train
-        feature1  feature2  
+        feature1  feature2
     0     0         0
     1     1         1
     3     3         3
@@ -88,9 +91,9 @@ class SupervisedData:
         target
     2   y
     """
+
     def __init__(self, data, x_cols, y_cols, **kwargs):
         """See help(SupervisedData)"""
-
 
 
 def dftype(df):
@@ -107,7 +110,7 @@ def dftype(df):
     summary : pandas.DataFrame
       The data frame contains summary numeric values which come from describe().
     unique_val : pandas.DataFrame
-      The data frame contains unique entries and their length in case of non-numerical columns.   
+      The data frame contains unique entries and their length in case of non-numerical columns.
 
     Examples
     --------
@@ -119,26 +122,24 @@ def dftype(df):
     >>>      })
     >>> summary, unique_df = pymleda.dftype(df)
     """
-    
+
     summary = df.describe()
-    
+
     cols = df.columns
     num_cols = df._get_numeric_data().columns
     non_num_cols = list(set(cols) - set(num_cols))
-    
-    unique = {"cloumn_name" : [],
-              "unique_values" : [],
-              "num_unique_values" : []}
+
+    unique = {"column_name": [], "unique_values": [], "num_unique_values": []}
 
     for cat in non_num_cols:
-        unique["cloumn_name"].append(cat)
+        unique["column_name"].append(cat)
         unique["unique_values"].append(df[cat].unique())
         unique["num_unique_values"].append(len(df[cat].unique()))
-    
+
     unique_val = pd.DataFrame(unique)
-        
+
     return summary, unique_val
-    
+
 
 def autoimpute_na(df):
     """
@@ -161,19 +162,19 @@ def autoimpute_na(df):
 
 def dfscaling(df):
     """
-    Apply standard scaling to the numeric features of a given dataframe. 
+    Apply standard scaling to the numeric features of a given dataframe.
     Parameters
     ----------
     df : pandas.DataFrame
-    	A pandas data frame.
+        A pandas data frame.
     Returns
     -------
     scaled_df : pandas.DataFrame
-      A data frame with standard scaling applied to the numeric features.  
+      A data frame with standard scaling applied to the numeric features.
     Examples
     --------
     >>> from pymleda import pymleda
     >>> df = pd.read_csv("test_data.csv")
     >>> dfscaling(df)
-    """ 
+    """
     return scaled_df
