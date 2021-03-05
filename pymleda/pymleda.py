@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 
 
@@ -80,6 +81,15 @@ class SupervisedData:
     def __init__(self, data, x_cols, y_cols, **kwargs):
         """See help(SupervisedData)"""
 
+        self.data = data
+        self.train_df, self.test_df = train_test_split(data, **kwargs)
+
+        self.x_train = self.train_df[x_cols]
+        self.y_train = self.train_df[y_cols]
+
+        self.x_test = self.test_df[x_cols]
+        self.y_test = self.test_df[y_cols]
+
 
 def dftype(df):
     """
@@ -150,7 +160,7 @@ def autoimpute_na(df):
         "NAN",
         "NA",
         "N/A",
-        "N\A",
+        "N\\A",
         "not available",
         "Not available",
         "-",
@@ -210,6 +220,7 @@ def dfscaling(df):
     -------
     scaled_df : pandas.DataFrame
       A data frame with standard scaling applied to the numeric features.
+
     Examples
     --------
     >>> from pymleda import pymleda

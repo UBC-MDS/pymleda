@@ -3,7 +3,6 @@ from pymleda import __version__
 import pandas as pd
 import numpy as np
 import pytest
-from sklearn.preprocessing import StandardScaler
 
 
 def test_version():
