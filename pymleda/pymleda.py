@@ -105,6 +105,7 @@ class SupervisedData:
         self.x_test = self.test_df[x_cols]
         self.y_test = self.test_df[y_cols]
 
+
 def dftype(df):
     """
     Explore the type of data frame variables and columns.
@@ -171,7 +172,10 @@ def autoimpute_na(df):
 
 def dfscaling(df):
     """
-    Apply standard scaling to the numeric features of a given dataframe.
+    Apply standard scaling and centering to the numeric features of a given dataframe.
+    The standard score of a sample x is calculated as:
+      z = (x - u) / s
+    where u is the mean of the training samples, and s is the standard deviation of the training samples.
     Parameters
     ----------
     df : pandas.DataFrame
@@ -180,10 +184,23 @@ def dfscaling(df):
     -------
     scaled_df : pandas.DataFrame
       A data frame with standard scaling applied to the numeric features.
+
     Examples
     --------
     >>> from pymleda import pymleda
     >>> df = pd.read_csv("test_data.csv")
     >>> dfscaling(df)
     """
+    # select numeric features in the dataframe
+    numeric_features = list(df.select_dtypes(include=[np.number]))
+    # select only the numeric features for centering and scaling
+    scaled_df = df[numeric_features]
+
+    # Fit and transform the dataframe
+    scaler = StandardScaler()
+    scaled_features = scaler.fit_transform(scaled_df.values)
+    scaled_df = pd.DataFrame(
+        scaled_features, index=scaled_df.index, columns=scaled_df.columns
+    )
+
     return scaled_df
