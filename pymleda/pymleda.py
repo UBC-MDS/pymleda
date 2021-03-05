@@ -105,7 +105,6 @@ class SupervisedData:
         self.x_test = self.test_df[x_cols]
         self.y_test = self.test_df[y_cols]
 
-
 def dftype(df):
     """
     Explore the type of data frame variables and columns.
@@ -118,18 +117,37 @@ def dftype(df):
     Returns
     -------
     summary : pandas.DataFrame
-      The data frame contains summary values which come from describe().
-    unique : pandas.DataFrame
+      The data frame contains summary numeric values which come from describe().
+    unique_val : pandas.DataFrame
       The data frame contains unique entries and their length in case of non-numerical columns.
 
     Examples
     --------
     >>> from pymleda import pymleda
-    >>> df = pd.read_csv("test_data.csv")
-    >>> pymleda.dftype(df)
+    >>> df = pd.DataFrame({
+    >>>     'type':['Air','Ship','Bus', 'Air' ],
+    >>>     'time':[6,32,31,5],
+    >>>     'origin': ['US', 'Mexico', 'CANADA', 'UK']
+    >>>      })
+    >>> summary, unique_df = pymleda.dftype(df)
     """
 
-    return summary, unique
+    summary = df.describe()
+
+    cols = df.columns
+    num_cols = df._get_numeric_data().columns
+    non_num_cols = list(set(cols) - set(num_cols))
+
+    unique = {"column_name": [], "unique_values": [], "num_unique_values": []}
+
+    for cat in non_num_cols:
+        unique["column_name"].append(cat)
+        unique["unique_values"].append(df[cat].unique())
+        unique["num_unique_values"].append(len(df[cat].unique()))
+
+    unique_val = pd.DataFrame(unique)
+
+    return summary, unique_val
 
 
 def autoimpute_na(df):
