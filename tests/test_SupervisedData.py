@@ -28,3 +28,18 @@ def test_supervised_data_split_sizes():
 
     assert len(supervised_data.test_df) == 0.75 * len(toy_data)
     assert len(supervised_data.train_df) == 0.25 * len(toy_data)
+
+
+def test_supervised_data_x():
+    # Test that the x portions of the data only contain the x columns
+
+    toy_data = pd.DataFrame(
+        {"col1": [1, 1, 1, 1], "col2": [2, 2, 2, 2], "col3": [3, 3, 3, 3]}
+    )
+
+    supervised_data = pymleda.SupervisedData(
+        toy_data, x_cols=["col1", "col2"], y_cols=["col3"]
+    )
+
+    assert list(supervised_data.x_train.columns) == ["col1", "col2"]
+    assert list(supervised_data.x_test.columns) == ["col1", "col2"]
