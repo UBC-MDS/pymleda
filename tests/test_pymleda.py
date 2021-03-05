@@ -23,7 +23,7 @@ def test_dftype():
 
     assert type(pymleda.dftype(df)[0]) == (
         pd.core.frame.DataFrame
-    ), "The date type of summry should be data frame."
+    ), "The date type of summary should be data frame."
 
     assert type(pymleda.dftype(df)[1]) == (
         pd.core.frame.DataFrame
@@ -32,3 +32,8 @@ def test_dftype():
     assert (
         len(pymleda.dftype(df)[0]) == 8
     ), "The length of summary data frame is incorrect."
+
+    assert (
+        (list(pymleda.dftype(df)[1].query("column_name == 'origin'").unique_values))
+        == df["origin"].unique()
+    ).all(), "The unique values are incorrect."
