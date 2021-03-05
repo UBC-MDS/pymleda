@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+from sklearn.preprocessing import StandardScaler
 
 
 class SupervisedData:
@@ -90,17 +91,37 @@ def dftype(df):
     Returns
     -------
     summary : pandas.DataFrame
-      The data frame contains summary values which come from describe().
-    unique : pandas.DataFrame
+      The data frame contains summary numeric values which come from describe().
+    unique_val : pandas.DataFrame
       The data frame contains unique entries and their length in case of non-numerical columns.
+
     Examples
     --------
     >>> from pymleda import pymleda
-    >>> df = pd.read_csv("test_data.csv")
-    >>> pymleda.dftype(df)
+    >>> df = pd.DataFrame({
+    >>>     'type':['Air','Ship','Bus', 'Air' ],
+    >>>     'time':[6,32,31,5],
+    >>>     'origin': ['US', 'Mexico', 'CANADA', 'UK']
+    >>>      })
+    >>> summary, unique_df = pymleda.dftype(df)
     """
 
-    return summary, unique
+    summary = df.describe()
+
+    cols = df.columns
+    num_cols = df._get_numeric_data().columns
+    non_num_cols = list(set(cols) - set(num_cols))
+
+    unique = {"column_name": [], "unique_values": [], "num_unique_values": []}
+
+    for cat in non_num_cols:
+        unique["column_name"].append(cat)
+        unique["unique_values"].append(df[cat].unique())
+        unique["num_unique_values"].append(len(df[cat].unique()))
+
+    unique_val = pd.DataFrame(unique)
+
+    return summary, unique_val
 
 
 def autoimpute_na(df):
@@ -177,7 +198,10 @@ def autoimpute_na(df):
 
 def dfscaling(df):
     """
-    Apply standard scaling to the numeric features of a given dataframe.
+    Apply standard scaling and centering to the numeric features of a given dataframe.
+    The standard score of a sample x is calculated as:
+      z = (x - u) / s
+    where u is the mean of the training samples, and s is the standard deviation of the training samples.
     Parameters
     ----------
     df : pandas.DataFrame
@@ -192,4 +216,16 @@ def dfscaling(df):
     >>> df = pd.read_csv("test_data.csv")
     >>> dfscaling(df)
     """
+    # select numeric features in the dataframe
+    numeric_features = list(df.select_dtypes(include=[np.number]))
+    # select only the numeric features for centering and scaling
+    scaled_df = df[numeric_features]
+
+    # Fit and transform the dataframe
+    scaler = StandardScaler()
+    scaled_features = scaler.fit_transform(scaled_df.values)
+    scaled_df = pd.DataFrame(
+        scaled_features, index=scaled_df.index, columns=scaled_df.columns
+    )
+
     return scaled_df
