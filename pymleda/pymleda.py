@@ -1,3 +1,6 @@
+import pandas as pd
+import numpy as np
+
 class SupervisedData:
     """A wrapper class for simplifying data splitting
     Wrapper that utilizes `sklearn.model_selection.train_test_split` to perform data spltting 
@@ -99,7 +102,7 @@ def dftype(df):
     return summary, unique
     
     
-    def autoimpute_na(df):
+def autoimpute_na(df):
     """
     Identify and impute missing values with the mean for numeric columns and the most frequent value for categorical columns in a dataframe.
     Parameters
