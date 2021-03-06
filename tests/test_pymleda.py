@@ -46,6 +46,12 @@ def test_autoimpute_na_2(model_df):
     pd.testing.assert_frame_equal(pymleda.autoimpute_na(toy_df_2), model_df)
 
 
+def test_autoimpute_na_3(model_df):
+    """Test that the input of the pymleda.autoimpute_na() function is not a dataframe"""
+    with pytest.raises(Exception):
+        pymleda.SupervisedData(pymleda.autoimpute_na(777), model_df)
+
+
 def test_dftype():
 
     df = pd.DataFrame(
