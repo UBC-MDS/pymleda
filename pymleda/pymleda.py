@@ -228,7 +228,7 @@ def dfscaling(df):
     >>> dfscaling(df)
     """
     if not isinstance(df, pd.DataFrame):
-        raise Exception("The date type of the input should be a pandas dataframe.")
+        raise Exception("TypeError: df must be a pandas dataframe.")
 
     assert len(list(df.select_dtypes(include=[np.number]))) != (
         0
