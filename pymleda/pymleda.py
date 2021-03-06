@@ -162,6 +162,9 @@ def autoimpute_na(df):
     >>> pymleda.autoimpute_na(toy_df)
     """
 
+    if not isinstance(df, pd.DataFrame):
+        raise Exception("TypeError: df must be a pandas dataframe.")
+
     # Check if there are any missing values entered manually
     rogue_na = [
         "na",
