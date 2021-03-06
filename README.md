@@ -28,11 +28,36 @@ In supervised machine learning, data splitting is often a multi-step process tha
 
 ## Dependencies
 
-- TODO
+- python = "^3.8"
+- pandas = "^1.2.3"
+- sklearn = "^0.0"
+- numpy = "^1.20.1"
 
 ## Usage
 
-- TODO
+- Import the package
+```Python
+from pymleda import pymleda
+```
+
+- Check the datatypes and a summary of your input dataframe
+```Python
+summary, unique_df = pymleda.dftype(df)
+```
+
+- Impute NAs in your input dataframe
+```Python
+pymleda.autoimpute_na(df)
+```
+- Apply centering and scaling to the numeric features in your input dataframe
+```Python
+pymleda.dfscaling(df)
+```
+
+- Split the data into X train, y train, X test, and y test subsets in one convenient class call using `SupervisedData`
+```Python
+supervised_data = SupervisedData(df, x_cols = ['feature1', 'feature2'], y_cols = ['target'])
+```
 
 ## Documentation
 
