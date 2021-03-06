@@ -227,6 +227,12 @@ def dfscaling(df):
     >>> df = pd.read_csv("test_data.csv")
     >>> dfscaling(df)
     """
+    if not isinstance(df, pd.DataFrame):
+        raise Exception("The date type of the input should be a pandas dataframe.")
+
+    assert len(list(df.select_dtypes(include=[np.number]))) != (
+        0
+    ), "There should be at least one numeric column in the input dataframe."
     # select numeric features in the dataframe
     numeric_features = list(df.select_dtypes(include=[np.number]))
     # select only the numeric features for centering and scaling
