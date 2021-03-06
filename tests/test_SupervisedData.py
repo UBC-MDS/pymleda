@@ -1,5 +1,6 @@
 from pymleda import pymleda
 import pandas as pd
+import pytest
 
 
 def test_supervised_data_original_dataset():
@@ -74,3 +75,20 @@ def test_supervised_data_y():
 
     assert list(supervised_data.y_train.columns) == ["col3"]
     assert list(supervised_data.y_test.columns) == ["col3"]
+
+
+def test_supervised_data_invalid_input():
+    # Test that an Exception is raised with invalid input
+
+    toy_data = pd.DataFrame(
+        {"col1": [1, 1, 1, 1], "col2": [2, 2, 2, 2], "col3": [3, 3, 3, 3]}
+    )
+
+    with pytest.raises(Exception):
+        pymleda.SupervisedData(1, x_cols=["col1", "col2"], y_cols=["col3"])
+
+    with pytest.raises(Exception):
+        pymleda.SupervisedData(toy_data, x_cols=1, y_cols=["col3"])
+
+    with pytest.raises(Exception):
+        pymleda.SupervisedData(toy_data, x_cols=["col1", "col2"], y_cols=1)
