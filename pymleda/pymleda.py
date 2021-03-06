@@ -82,7 +82,7 @@ class SupervisedData:
         """See help(SupervisedData)"""
 
         if not isinstance(data, pd.DataFrame):
-            raise Exception("Error")
+            raise Exception("TypeError: data must be a pandas dataframe")
         if not isinstance(x_cols, Sequence):
             raise Exception("TypeError: x_cols must be a sequence of columns")
         if not isinstance(y_cols, Sequence):
