@@ -53,6 +53,8 @@ def test_autoimpute_na_3(model_df):
 
 
 def test_dftype():
+    """Test that the dftupe works properly. This test will examine the data type of
+    input and output. Furthermore, it will check the output is corret."""
 
     df = pd.DataFrame(
         {
@@ -82,6 +84,9 @@ def test_dftype():
         (list(pymleda.dftype(df)[1].query("column_name == 'origin'").unique_values))
         == df["origin"].unique()
     ).all(), "The unique values are incorrect."
+
+    with pytest.raises(Exception):
+        pymleda.dftype(1)
 
 
 def test_dfscaling():
