@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
+from collections.abc import Sequence
 
 
 class SupervisedData:
@@ -12,7 +13,6 @@ class SupervisedData:
     ----------
     data : pandas.DataFrame
         Data set to be used for splitting
-
     x_cols: *array
         Sequence of feature names (X) to be used as independent variables
     y_cols: *array
@@ -80,6 +80,17 @@ class SupervisedData:
 
     def __init__(self, data, x_cols, y_cols, **kwargs):
         """See help(SupervisedData)"""
+
+        if not isinstance(data, pd.DataFrame):
+            raise Exception("TypeError: data must be a pandas dataframe")
+        if not isinstance(x_cols, Sequence):
+            raise Exception("TypeError: x_cols must be a sequence of columns")
+        if not isinstance(y_cols, Sequence):
+            raise Exception("TypeError: y_cols must be a sequence of columns")
+
+        # Cast any sequence type to list so it can be used for indexing a pandas df
+        x_cols = list(x_cols)
+        y_cols = list(y_cols)
 
         self.data = data
         self.train_df, self.test_df = train_test_split(data, **kwargs)
