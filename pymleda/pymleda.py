@@ -152,7 +152,7 @@ def autoimpute_na(df):
     """
 
     if not isinstance(df, pd.DataFrame):
-        raise Exception("The input is not a pandas dataframe!")
+        raise Exception("TypeError: df must be a pandas dataframe.")
 
     # Check if there are any missing values entered manually
     rogue_na = [
