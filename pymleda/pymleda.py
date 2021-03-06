@@ -118,7 +118,7 @@ def dftype(df):
 
     # check the input data is data frame
     if not isinstance(df, pd.DataFrame):
-        raise Exception("TypeError: input data should be a pandas dataframe")
+        raise Exception("TypeError: df must be a pandas dataframe")
 
     summary = df.describe()
 
