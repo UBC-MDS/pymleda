@@ -42,7 +42,6 @@ class SupervisedData:
     Examples
     --------
     >>> from pymleda import pymleda
-    >>> from sklearn.model_selection import train_test_split
     >>> supervised_data = SupervisedData(df, x_cols = ['feature1', 'feature2'], y_cols = ['target'])
 
     The original dataset
@@ -243,7 +242,7 @@ def dfscaling(df):
     --------
     >>> from pymleda import pymleda
     >>> df = pd.read_csv("test_data.csv")
-    >>> dfscaling(df)
+    >>> pymleda.dfscaling(df)
     """
     if not isinstance(df, pd.DataFrame):
         raise Exception("TypeError: df must be a pandas dataframe.")
