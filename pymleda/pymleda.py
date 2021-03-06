@@ -116,6 +116,10 @@ def dftype(df):
     >>> summary, unique_df = pymleda.dftype(df)
     """
 
+    # check the input data is data frame
+    if not isinstance(df, pd.DataFrame):
+        raise Exception("TypeError: input data should be a pandas dataframe")
+
     summary = df.describe()
 
     cols = df.columns
