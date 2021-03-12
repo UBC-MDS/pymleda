@@ -1,12 +1,7 @@
 from pymleda import pymleda
-from pymleda import __version__
 import pandas as pd
 import numpy as np
 import pytest
-
-
-def test_version():
-    assert __version__ == "0.1.0"
 
 
 @pytest.fixture
