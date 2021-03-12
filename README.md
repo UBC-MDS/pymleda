@@ -1,6 +1,6 @@
 # pymleda 
 
-![](https://github.com/UBC-MDS/pymleda/workflows/build/badge.svg) [![codecov](https://codecov.io/gh/UBC-MDS/pymleda/branch/main/graph/badge.svg)](https://codecov.io/gh/UBC-MDS/pymleda) ![Release](https://github.com/UBC-MDS/pymleda/workflows/Release/badge.svg) [![Documentation Status](https://readthedocs.org/projects/pymleda/badge/?version=latest)](https://pymleda.readthedocs.io/en/latest/?badge=latest)
+![](https://github.com/UBC-MDS/pymleda/workflows/build/badge.svg) [![codecov](https://codecov.io/gh/UBC-MDS/pymleda/branch/main/graph/badge.svg)](https://codecov.io/gh/UBC-MDS/pymleda) [![Deploy](https://github.com/UBC-MDS/pymleda/actions/workflows/deploy.yml/badge.svg)](https://github.com/UBC-MDS/pymleda/actions/workflows/deploy.yml) [![Documentation Status](https://readthedocs.org/projects/pymleda/badge/?version=latest)](https://pymleda.readthedocs.io/en/latest/?badge=latest)
 
 Python package that helps with preliminary eda for supervised machine learning tasks.
 
