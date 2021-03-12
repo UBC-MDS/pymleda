@@ -49,6 +49,7 @@ class SupervisedData:
     >>> supervised_data = SupervisedData(df,
                                         x_cols = ['feature1', 'feature2'],
                                         y_cols = ['target'])
+        The original dataset unchanged
     >>> supervised_data.data
         feature1  feature2  target
     0     0         0           n
