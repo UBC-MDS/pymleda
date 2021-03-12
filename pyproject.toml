@@ -26,3 +26,9 @@ build-backend = "poetry.core.masonry.api"
 
 [flake8]
 max-line-length = 180
+
+[tool.semantic_release]
+version_variable = "pymleda/__init__.py:__version__"
+version_source = "commit"
+upload_to_pypi = "false"
+patch_without_tag = "true"
