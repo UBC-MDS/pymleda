@@ -4,7 +4,8 @@ import pytest
 
 
 def test_supervised_data_original_dataset():
-    # Simple test to ensure that the data attribute returns the original data unchanged
+    # Simple test to ensure that the data attribute returns the original
+    # data unchanged
     toy_data = pd.DataFrame(
         {"col1": [1, 1, 1, 1], "col2": [2, 2, 2, 2], "col3": [3, 3, 3, 3]}
     )
@@ -16,7 +17,7 @@ def test_supervised_data_original_dataset():
             ).data,
             toy_data,
         )
-        == None
+        is None
     )
 
 
@@ -35,7 +36,9 @@ def test_supervised_data_split_sizes():
     assert len(supervised_data.train_df) == 0.75 * len(toy_data)
 
     # Reconstruct the original dataframe from the two subsets as a second check
-    reconstructed = pd.concat([supervised_data.test_df, supervised_data.train_df])
+    reconstructed = pd.concat(
+        [supervised_data.test_df, supervised_data.train_df]
+    )
 
     assert (
         pd.testing.assert_frame_equal(
@@ -43,7 +46,7 @@ def test_supervised_data_split_sizes():
             toy_data,
             check_like=True,
         )
-        == None
+        is None
     )
 
 

@@ -28,7 +28,13 @@ toy_df_1 = pd.DataFrame(choco_data_1, columns=["Chocolate_brand", "Price"])
 
 
 choco_data_2 = {
-    "Chocolate_brand": ["Lindt", "Rakhat", "Lindt", "Richart", "not available"],
+    "Chocolate_brand": [
+        "Lindt",
+        "Rakhat",
+        "Lindt",
+        "Richart",
+        "not available",
+    ],
     "Price": [3.0, np.nan, 4.0, 6.0, 3.0],
 }
 toy_df_2 = pd.DataFrame(choco_data_2, columns=["Chocolate_brand", "Price"])
@@ -36,7 +42,8 @@ toy_df_2 = pd.DataFrame(choco_data_2, columns=["Chocolate_brand", "Price"])
 
 def test_autoimpute_na_1(model_df):
     """Test that the output dataframe of the pymleda.autoimpute_na() function
-    with no missing values is equal to the model dataframe (identical to the original one)"""
+    with no missing values is equal to the model dataframe
+    (identical to the original one)"""
     pd.testing.assert_frame_equal(pymleda.autoimpute_na(toy_df_1), model_df)
 
 
@@ -47,7 +54,8 @@ def test_autoimpute_na_2(model_df):
 
 
 def test_autoimpute_na_3(model_df):
-    """Test that the input of the pymleda.autoimpute_na() function is not a dataframe"""
+    """Test that the input of the pymleda.autoimpute_na()
+    function is not a dataframe"""
     with pytest.raises(Exception):
         pymleda.SupervisedData(pymleda.autoimpute_na(777), model_df)
 
@@ -81,7 +89,13 @@ def test_dftype():
     ), "The length of summary data frame is incorrect."
 
     assert (
-        (list(pymleda.dftype(df)[1].query("column_name == 'origin'").unique_values))
+        (
+            list(
+                pymleda.dftype(df)[1]
+                .query("column_name == 'origin'")
+                .unique_values
+            )
+        )
         == df["origin"].unique()
     ).all(), "The unique values are incorrect."
 
