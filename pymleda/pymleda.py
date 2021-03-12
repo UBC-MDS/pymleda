@@ -7,8 +7,9 @@ from collections.abc import Sequence
 
 class SupervisedData:
     """A wrapper class for simplifying data splitting
-    Wrapper that utilizes `sklearn.model_selection.train_test_split` to perform data spltting
-    and provides convenient access to `X` and `y` portions of both the test split and the train split.
+    Wrapper that utilizes `sklearn.model_selection.train_test_split`
+    to perform data spltting and provides convenient access to `X`
+    and `y` portions of both the test split and the train split.
     Parameters
     ----------
     data : pandas.DataFrame
@@ -16,11 +17,13 @@ class SupervisedData:
     x_cols: *array
         Sequence of feature names (X) to be used as independent variables
     y_cols: *array
-        Sequence of target names (y) to be used as dependent variables or labels
+        Sequence of target names (y) to be used as dependent variables
     **kawrgs:
         Additional parameters to pass to sklearn's train_test_split().
-        In the absence of additional parameters, the default parameters of train_test_split() are used including test size  = 0.25
-        For more information see hyperlink: `sklearn's function documentation <https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html/>`_.
+        In the absence of additional parameters, the default parameters
+        of train_test_split() are used including test size  = 0.25
+        For more information see hyperlink: `sklearn's
+        function documentation <https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html/>`_.
 
     Attributes
     ----------
@@ -199,7 +202,9 @@ def autoimpute_na(df):
                 )
 
     numeric_columns = df.select_dtypes(include=["number"]).columns.values
-    categorical_columns = df.select_dtypes(exclude=["number", "bool_"]).columns.values
+    categorical_columns = df.select_dtypes(
+        exclude=["number", "bool_"]
+    ).columns.values
     for col in df:
         if np.sum(df[col].isnull()) > 0:
             for (
@@ -208,7 +213,9 @@ def autoimpute_na(df):
                 numeric_columns
             ):  # Fill missing values with the mean for numeric columns
                 if np.sum(df[col].isnull()) > 0:
-                    print("Missing values were imputed in the", (col), "column.")
+                    print(
+                        "Missing values were imputed in the", (col), "column."
+                    )
                     df[col] = df[col].fillna(df[col].mean())
             for (
                 col
@@ -216,7 +223,9 @@ def autoimpute_na(df):
                 categorical_columns
             ):  # Fill missing values with the most frequent value for categorical columns
                 if np.sum(df[col].isnull()) > 0:
-                    print("Missing values were imputed in the", (col), "column.")
+                    print(
+                        "Missing values were imputed in the", (col), "column."
+                    )
                     df[col] = df[col].fillna(df[col].describe()["top"])
     imputed_df = df
 
