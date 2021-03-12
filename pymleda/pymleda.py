@@ -23,7 +23,8 @@ class SupervisedData:
         In the absence of additional parameters, the default parameters
         of train_test_split() are used including test size  = 0.25
         For more information see hyperlink: `sklearn's
-        function documentation <https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html/>`_.
+        function documentation
+        <https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html/>`_.
 
     Attributes
     ----------
@@ -45,7 +46,9 @@ class SupervisedData:
     Examples
     --------
     >>> from pymleda import pymleda
-    >>> supervised_data = SupervisedData(df, x_cols = ['feature1', 'feature2'], y_cols = ['target'])
+    >>> supervised_data = SupervisedData(df,
+                                        x_cols = ['feature1', 'feature2'],
+                                        y_cols = ['target'])
 
     The original dataset
     >>> supervised_data.data
@@ -90,7 +93,8 @@ class SupervisedData:
         if not isinstance(y_cols, Sequence):
             raise Exception("TypeError: y_cols must be a sequence of columns")
 
-        # Cast any sequence type to list so it can be used for indexing a pandas df
+        # Cast any sequence type to list so it can be used for indexing
+        # a pandas df
         x_cols = list(x_cols)
         y_cols = list(y_cols)
 
@@ -114,9 +118,10 @@ def dftype(df):
     Returns
     -------
     summary : pandas.DataFrame
-      The data frame contains summary numeric values which come from describe().
+      The data frame contains summary numeric values which come from describe()
     unique_val : pandas.DataFrame
-      The data frame contains unique entries and their length in case of non-numerical columns.
+      The data frame contains unique entries and their length in case of
+      non-numerical columns.
 
     Examples
     --------
@@ -153,7 +158,8 @@ def dftype(df):
 
 def autoimpute_na(df):
     """
-    Identify and impute missing values with the mean for numeric columns and the most frequent value for categorical columns in a dataframe.
+    Identify and impute missing values with the mean for numeric columns and
+    the most frequent value for categorical columns in a dataframe.
     Parameters
     ----------
     df : pandas.DataFrame
@@ -198,7 +204,9 @@ def autoimpute_na(df):
             if col_count == len(df.columns):
                 imputed_df = df
                 print(
-                    "There are no missing values in the dataframe! I am returning the original dataframe!"
+                    """There are no missing values in the dataframe!
+                    I am returning the original dataframe!
+                    """
                 )
 
     numeric_columns = df.select_dtypes(include=["number"]).columns.values
@@ -221,7 +229,8 @@ def autoimpute_na(df):
                 col
             ) in (
                 categorical_columns
-            ):  # Fill missing values with the most frequent value for categorical columns
+            ):  # Fill missing values with the most frequent value for
+                # categorical columns
                 if np.sum(df[col].isnull()) > 0:
                     print(
                         "Missing values were imputed in the", (col), "column."
@@ -234,10 +243,12 @@ def autoimpute_na(df):
 
 def dfscaling(df):
     """
-    Apply standard scaling and centering to the numeric features of a given dataframe.
+    Apply standard scaling and centering to the numeric features of
+    a given dataframe.
     The standard score of a sample x is calculated as:
       z = (x - u) / s
-    where u is the mean of the training samples, and s is the standard deviation of the training samples.
+    where u is the mean of the training samples, and s is the standard
+    deviation of the training samples.
     Parameters
     ----------
     df : pandas.DataFrame

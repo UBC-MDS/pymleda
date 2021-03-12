@@ -4,7 +4,8 @@ import pytest
 
 
 def test_supervised_data_original_dataset():
-    # Simple test to ensure that the data attribute returns the original data unchanged
+    # Simple test to ensure that the data attribute returns the original
+    # data unchanged
     toy_data = pd.DataFrame(
         {"col1": [1, 1, 1, 1], "col2": [2, 2, 2, 2], "col3": [3, 3, 3, 3]}
     )
