@@ -7,7 +7,7 @@ Python package that helps with preliminary eda for supervised machine learning t
 ## Installation
 
 ```bash
-$ pip install -i https://test.pypi.org/simple/ pymleda
+$ pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple pymleda
 ```
 
 ## Features
